@@ -19,7 +19,7 @@ def read_file(filename):
 
 data_load_state = st.text('Loading data...')
 #data = read_file("elo-stream/train_FE2.csv")
-df = pd.read_csv(s3.open(f'{elo-stream/train_FE2.csv}', mode='rb'))
+df = pd.read_csv(fs.open('elo-stream/train_FE2.csv'))
 data_load_state.text("Loading data...Done!")
 st.text(df.shape)
 data_load_state.text(" ")
