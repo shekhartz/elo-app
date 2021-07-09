@@ -15,7 +15,7 @@ st.sidebar.header('Feature Facts')
 st.sidebar.text('* This model uses 201917 training datapoints.')
 st.sidebar.text('* This model is trained on Light GBM.')
 
-expander = st.beta_expander("FAQ")
+expander = st.sidebar.beta_expander("Feature Facts")
 expander.write("Here you could put in some really, really long explanations...")
 
 #--------------------------------------------------------------------------------------------------
