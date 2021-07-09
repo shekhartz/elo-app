@@ -11,9 +11,12 @@ st.title("ELO Merchant Category Recommendation")
 st.subheader("Customer Loyalty Score Prediction")
 
 
-option = st.sidebar.selectbox('Which number do you like best?')
+option = st.sidebar.selectbox(
+    'Which number do you like best?',
+     'first column')
 
 'You selected:', option
+
 #--------------------------------------------------------------------------------------------------
 fs = s3fs.S3FileSystem(anon=False)
 
