@@ -18,10 +18,10 @@ def read_file(filename):
         return f.read().decode("utf-8")
 
 data_load_state = st.text('Loading data...')
-data = read_file("elo-stream/train_FE2.csv")
+#data = read_file("elo-stream/train_FE2.csv")
+df = pd.read_csv(s3.open(f'{elo-stream/train_FE2.csv}', mode='rb'))
 data_load_state.text("Loading data...Done!")
-a = pd.read_csv(io.BytesIO(data))
-st.text(a.shape)
+st.text(df.shape)
 data_load_state.text(" ")
 #--------------------------------------------------------------------------------------------------
 
