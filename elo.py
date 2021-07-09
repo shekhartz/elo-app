@@ -9,6 +9,13 @@ import io
 
 st.title("ELO Merchant Category Recommendation")
 st.subheader("Customer Loyalty Score Prediction")
+
+
+option = st.sidebar.selectbox(
+    'Which number do you like best?',
+     df['first column'])
+
+'You selected:', option
 #--------------------------------------------------------------------------------------------------
 fs = s3fs.S3FileSystem(anon=False)
 
