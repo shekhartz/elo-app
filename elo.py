@@ -11,9 +11,7 @@ st.title("ELO Merchant Category Recommendation")
 st.subheader("Customer Loyalty Score Prediction")
 
 
-option = st.sidebar.selectbox(
-    'Which number do you like best?',
-     df['first column'])
+option = st.sidebar.selectbox('Which number do you like best?')
 
 'You selected:', option
 #--------------------------------------------------------------------------------------------------
