@@ -8,7 +8,6 @@ import os
 
 st.title("ELO Loyalty Score Prediction")
 #--------------------------------------------------------------------------------------------------
-
 fs = s3fs.S3FileSystem(anon=False)
 
 @st.cache(ttl=600)
@@ -16,26 +15,16 @@ def read_file(filename):
     with fs.open(filename) as f:
         return f.read().decode("utf-8")
 
+data_load_state = st.text('Loading data...')
+data = read_file("elo-stream/train_FE2.csv")
+data_load_state.text("Loading data...Done!")
+st.text(data.shape)
+data_load_state.text(" ")
 #--------------------------------------------------------------------------------------------------
 
-#DATA_URL = ('train_FE2.csv')
-
-#--------------------------------------------------------------------------------------------------
 MODEL_URL = ('lgb_kfold_model.sav')
 nrows = 1000
 model = pickle.load(open(MODEL_URL, 'rb'))
-
-#--------------------------------------------------------------------------------------------------
-@st.cache
-def load_data():
-  #data = pd.read_csv(DATA_URL, nrows=nrows)
-  data = read_file("elo-stream/train_FE2.csv")
-  return data
-
-data_load_state = st.text('Loading data...')
-data = load_data()
-data_load_state.text("Loading data...Done!")
-data_load_state.text(" ")
 
 #--------------------------------------------------------------------------------------------------
 def checkValid(cardID):
