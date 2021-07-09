@@ -16,7 +16,7 @@ st.sidebar.text('* This model uses 201917 training datapoints.')
 st.sidebar.text('* This model is trained on Light GBM.')
 
 expander = st.sidebar.beta_expander("Feature Facts")
-expander.write(st.text('* This model uses 201917 training datapoints.')
+expander.write(st.text('* This model uses 201917 training datapoints.'),
                st.text('* This model is trained on Light GBM.'))
 
 #--------------------------------------------------------------------------------------------------
