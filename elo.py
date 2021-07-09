@@ -20,7 +20,7 @@ def read_file(filename):
 data_load_state = st.text('Loading data...')
 data = read_file("elo-stream/train_FE2.csv")
 data_load_state.text("Loading data...Done!")
-data_load_state.text(data.shape[0], 'data points loaded!')
+data_load_state.text(f"{data.shape[0]} dataset loaded successfully!")
 
 #--------------------------------------------------------------------------------------------------
 MODEL_URL = ('lgb_kfold_model.sav')
