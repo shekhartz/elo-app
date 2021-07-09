@@ -7,8 +7,8 @@ import s3fs
 import os
 import io
 
-
-st.title("ELO Loyalty Score Prediction")
+st.title("ELO Merchant Category Recommendation")
+st.subheader("Customer Loyalty Score Prediction")
 #--------------------------------------------------------------------------------------------------
 fs = s3fs.S3FileSystem(anon=False)
 
