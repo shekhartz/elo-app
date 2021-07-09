@@ -8,12 +8,14 @@ import os
 
 st.title("ELO Loyalty Score Prediction")
 #--------------------------------------------------------------------------------------------------
-DATA_URL = ('https://elo-stream.s3.us-east-2.amazonaws.com/train_FE2.csv')
+#DATA_URL = ('https://elo-stream.s3.us-east-2.amazonaws.com/train_FE2.csv')
+DATA_URL = ('https://s3-us-west-2.amazonaws.com/'
+            'streamlit-demo-data/uber-raw-data-sep14.csv.gz')
 
 def load_data(nrows):
     data = pd.read_csv(DATA_URL, nrows=nrows)
     return data
-    
+
 data_load_state = st.text('Loading data...')
 data = load_data(1000)
 st.text_input(data.shape)
