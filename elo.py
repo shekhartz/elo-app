@@ -11,10 +11,6 @@ st.title("ELO Merchant Category Recommendation")
 st.subheader("Customer Loyalty Score Prediction")
 
 #--------------------------------------------------------------------------------------------------
-st.sidebar.header('Feature Facts')
-st.sidebar.text('* This model uses 201917 training datapoints.')
-st.sidebar.text('* This model is trained on Light GBM.')
-
 with st.sidebar.beta_expander("Feature Facts"):
     st.write(
     """
