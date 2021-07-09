@@ -8,16 +8,18 @@ import os
 
 st.title("ELO Loyalty Score Prediction")
 #--------------------------------------------------------------------------------------------------
-DATA_URL = ('https://elo-stream.s3.us-east-2.amazonaws.com/train_FE2.csv')
+fs = s3fs.S3FileSystem(anon=False)
 
-
-def load_data(nrows):
-    data = pd.read_csv(DATA_URL, nrows=nrows)
-    return data
+@st.cache(ttl=600)
+def read_file(filename):
+    with fs.open(filename) as f:
+        return f.read().decode("utf-8")
 
 data_load_state = st.text('Loading data...')
-data = load_data(1000)
-st.text_input(data.shape)
+data = read_file("elo-stream/train_FE2.csv")
+data_load_state.text("Loading data...Done!")
+st.text(data.shape)
+data_load_state.text(" ")
 #--------------------------------------------------------------------------------------------------
 
 MODEL_URL = ('lgb_kfold_model.sav')
