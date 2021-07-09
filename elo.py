@@ -2,19 +2,21 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
-import gdown
 from sklearn.metrics import mean_squared_error
-
+import s3fs
+import os
 
 st.title("ELO Loyalty Score Prediction")
-
 #--------------------------------------------------------------------------------------------------
 
+fs = s3fs.S3FileSystem(anon=False)
 
-url='https://drive.google.com/file/d/1P29wRk7_S_iKqsqmvhNAjtX6_Z2fQ-SB/view?usp=sharing'
-DATA_URL='https://drive.google.com/uc?id=' + url.split('/')[-2]
-#df = pd.read_csv(url2)
+@st.cache(ttl=600)
+def read_file(filename):
+    with fs.open(filename) as f:
+        return f.read().decode("utf-8")
 
+#--------------------------------------------------------------------------------------------------
 
 #DATA_URL = ('train_FE2.csv')
 
@@ -26,7 +28,8 @@ model = pickle.load(open(MODEL_URL, 'rb'))
 #--------------------------------------------------------------------------------------------------
 @st.cache
 def load_data():
-  data = pd.read_csv(DATA_URL, nrows=nrows)
+  #data = pd.read_csv(DATA_URL, nrows=nrows)
+  data = read_file("elo-stream/train_FE2.csv")
   return data
 
 data_load_state = st.text('Loading data...')
@@ -50,14 +53,14 @@ def predict(cardID):
   return rmse
 
 #--------------------------------------------------------------------------------------------------
-def main():             
+def main():
     cardID = st.text_input("Enter Card ID")
     result = ""
-      
-    if st.button("Check Loyalty Score"): 
+
+    if st.button("Check Loyalty Score"):
         row_count = checkValid(cardID)
-        if row_count > 0: 
-           result = predict(cardID) 
+        if row_count > 0:
+           result = predict(cardID)
            st.success('RMSE is {}'.format(result))
         else:
            st.error('Please enter a valid Card ID')
@@ -67,6 +70,5 @@ def main():
         st.subheader('You can choose from below sample Card IDs')
         st.write(data['card_id'][:10])
 
-if __name__=='__main__': 
+if __name__=='__main__':
     main()
-
