@@ -11,7 +11,9 @@ st.title("ELO Merchant Category Recommendation")
 st.subheader("Customer Loyalty Score Prediction")
 
 
-st.sidebar.text('Feature Facts')
+a = st.sidebar.header('Feature Facts')
+a.text('* LGBM Model')
+a.text('* LGBM Model2')
 
 
 #--------------------------------------------------------------------------------------------------
