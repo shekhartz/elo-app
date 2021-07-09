@@ -10,11 +10,10 @@ import io
 st.title("ELO Merchant Category Recommendation")
 st.subheader("Customer Loyalty Score Prediction")
 
-
+#--------------------------------------------------------------------------------------------------
 st.sidebar.header('Feature Facts')
-st.sidebar.text('* LGBM Model')
-st.sidebar.text('* LGBM Model2')
-
+st.sidebar.text('* This model uses training dataset of size 201917.')
+st.sidebar.text('* This model is trained on Light GBM.')
 
 #--------------------------------------------------------------------------------------------------
 fs = s3fs.S3FileSystem(anon=False)
@@ -27,7 +26,7 @@ def read_file(filename):
 data_load_state = st.text('Loading data...')
 data = read_file("elo-stream/train_FE2.csv")
 data_load_state.text("Loading data...Done!")
-data_load_state.text(f"{data.shape[0]} dataset loaded successfully!")
+data_load_state.text(" ")
 
 #--------------------------------------------------------------------------------------------------
 MODEL_URL = ('lgb_kfold_model.sav')
