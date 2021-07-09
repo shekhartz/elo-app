@@ -15,8 +15,12 @@ st.sidebar.header('Feature Facts')
 st.sidebar.text('* This model uses 201917 training datapoints.')
 st.sidebar.text('* This model is trained on Light GBM.')
 
-expander = st.sidebar.beta_expander("Feature Facts")
-expander.write('* This model uses 201917 training datapoints.', '* This model is trained on Light GBM.')
+with st.sidebar.beta_expander("Feature Facts"):
+    st.write(
+    """
+    - This model uses 201917 training datapoints.
+    - This model is trained on Light GBM.
+    """)
 
 #--------------------------------------------------------------------------------------------------
 fs = s3fs.S3FileSystem(anon=False)
