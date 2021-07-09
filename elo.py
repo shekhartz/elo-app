@@ -65,7 +65,7 @@ def main():
 
 
     if st.checkbox('Show Sample Card ID'):
-        st.subheader('You can choose from below sample Card IDs')
+        st.text('You can choose from below sample Card IDs')
         st.write(data['card_id'][:10])
 
 if __name__=='__main__':
