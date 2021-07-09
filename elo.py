@@ -5,6 +5,8 @@ import pickle
 from sklearn.metrics import mean_squared_error
 import s3fs
 import os
+import io
+
 
 st.title("ELO Loyalty Score Prediction")
 #--------------------------------------------------------------------------------------------------
@@ -18,7 +20,8 @@ def read_file(filename):
 data_load_state = st.text('Loading data...')
 data = read_file("elo-stream/train_FE2.csv")
 data_load_state.text("Loading data...Done!")
-st.text(data.shape)
+a = pd.read_csv(io.BytesIO(data))
+st.text(a.shape)
 data_load_state.text(" ")
 #--------------------------------------------------------------------------------------------------
 
