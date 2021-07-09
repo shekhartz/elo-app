@@ -14,19 +14,16 @@ fs = s3fs.S3FileSystem(anon=False)
 
 @st.cache(ttl=600)
 def read_file(filename):
-    with fs.open(filename) as f:
-        return f.read().decode("utf-8")
+    data = pd.read_csv(fs.open('elo-stream/train_FE2.csv'))
+    return data
 
 data_load_state = st.text('Loading data...')
-#data = read_file("elo-stream/train_FE2.csv")
-df = pd.read_csv(fs.open('elo-stream/train_FE2.csv'))
+data = read_file("elo-stream/train_FE2.csv")
 data_load_state.text("Loading data...Done!")
-st.text(df.shape)
-data_load_state.text(" ")
-#--------------------------------------------------------------------------------------------------
+data_load_state.text(data.shape[0] 'data points loaded!')
 
+#--------------------------------------------------------------------------------------------------
 MODEL_URL = ('lgb_kfold_model.sav')
-nrows = 1000
 model = pickle.load(open(MODEL_URL, 'rb'))
 
 #--------------------------------------------------------------------------------------------------
