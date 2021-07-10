@@ -14,7 +14,7 @@ st.subheader("Customer Loyalty Score Prediction")
 with st.sidebar.beta_expander("Feature Facts"):
     st.write(
     """
-    - This model uses 201917 training datapoints.
+    - This model uses 2,01,917 training datapoints.
     - This model is trained on Light GBM.
     """)
 
