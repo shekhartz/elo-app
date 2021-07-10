@@ -20,6 +20,26 @@ with st.sidebar.beta_expander("Feature Facts"):
     """)
 
 #--------------------------------------------------------------------------------------------------
+footer="""
+<style>
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: black;
+color: black;
+text-align: center;
+}
+</style>
+
+<div class="footer">
+<p>Developed with ❤ by Himanshu Shekhar</a></p>
+</div>
+"""
+st.sidebar.markdown(footer,unsafe_allow_html=True)
+
+#--------------------------------------------------------------------------------------------------
 fs = s3fs.S3FileSystem(anon=False)
 
 @st.cache(ttl=600)
@@ -51,35 +71,6 @@ def predict(cardID):
   rmse = mean_squared_error(y_pred, y)**0.5
   return rmse
 
-
-footer="""<style>
-a:link , a:visited{
-color: blue;
-background-color: transparent;
-text-decoration: underline;
-}
-
-a:hover,  a:active {
-color: red;
-background-color: transparent;
-text-decoration: underline;
-}
-
-.footer {
-position: fixed;
-left: 0;
-bottom: 0;
-width: 100%;
-background-color: white;
-color: black;
-text-align: center;
-}
-</style>
-<div class="footer">
-<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://www.heflin.dev/" target="_blank">Heflin Stephen Raj S</a></p>
-</div>
-"""
-st.markdown(footer,unsafe_allow_html=True)
 #--------------------------------------------------------------------------------------------------
 def main():
     cardID = st.text_input("Enter Card ID")
