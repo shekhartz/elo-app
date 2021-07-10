@@ -20,24 +20,7 @@ with st.sidebar.beta_expander("Feature Facts"):
     """)
 
 #--------------------------------------------------------------------------------------------------
-footer="""
-<style>
-.footer {
-position: fixed;
-left: 0;
-bottom: 0;
-width: 100%;
-background-color: black;
-color: white;
-text-align: center;
-}
-</style>
 
-<div class="footer">
-<p>Developed with ❤ by Himanshu Shekhar</a></p>
-</div>
-"""
-st.sidebar.markdown(footer,unsafe_allow_html=True)
 
 #--------------------------------------------------------------------------------------------------
 fs = s3fs.S3FileSystem(anon=False)
