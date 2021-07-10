@@ -7,6 +7,7 @@ import s3fs
 import os
 import io
 
+st.set_page_config(layout="wide")
 st.title("ELO Merchant Category Recommendation")
 st.subheader("Customer Loyalty Score Prediction")
 
