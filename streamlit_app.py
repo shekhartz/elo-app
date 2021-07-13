@@ -7,20 +7,10 @@ import s3fs
 import os
 import io
 
+#--------------------------------------------------------------------------------------------------
 st.set_page_config(layout="wide")
 st.title("ELO Merchant Category Recommendation")
 st.subheader("Customer Loyalty Score Prediction")
-
-#--------------------------------------------------------------------------------------------------
-with st.sidebar.beta_expander("Feature Facts"):
-    st.write(
-    """
-    - This model uses 2,01,917 training datapoints.
-    - This model is trained on Light GBM.
-    """)
-
-#--------------------------------------------------------------------------------------------------
-
 
 #--------------------------------------------------------------------------------------------------
 fs = s3fs.S3FileSystem(anon=False)
